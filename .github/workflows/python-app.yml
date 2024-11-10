@@ -28,8 +28,3 @@ jobs:
       - name: Configure DVC remote
         run: |
           dvc repro
-
-
-      - name: Pull data from DVC remote
-        run: |
-          dvc pull
