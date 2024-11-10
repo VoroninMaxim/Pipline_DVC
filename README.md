@@ -52,4 +52,4 @@ dvc dag
 
 _Ниже представлен результат тестирования_
 
-[![Build Staus](https://github.com/VoroninMaxim/Pipline_DVC/actions/runs/11768357847)
+[![Build Staus](https://github.com/VoroninMaxim/Pipline_DVC/workflows/CI%2FCD/badge.svg)
