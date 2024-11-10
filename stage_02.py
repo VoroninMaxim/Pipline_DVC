@@ -1,9 +1,10 @@
-from catboost.datasets import titanic
+import pandas as pd
 
-# load
-titanic_train, titanic_test = titanic()
+#Load
+titanic_train = pd.read_csv('titanic_train.csv', sep=',')
 
-titanic_train = titanic_train[['Pclass', 'Sex', 'Age']]
+mean_age = titanic_train['Age'].mean()
 
-#Save
+titanic_train['Age'] = titanic_train['Age'].apply(lambda x: mean_age if pd.isna(x) else x)
+
 titanic_train.to_csv('titanic_train.csv', index=False)
