@@ -48,8 +48,5 @@ dvc dag
 ```
 
 ### Результат тестировани
-![Example Image](https://github.com/VoroninMaxim/Pipline_DVC/actions/runs/11768357847)
+[![Build Staus](https://github.com/VoroninMaxim/Pipline_DVC/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/VoroninMaxim/Pipline_DVC/actions/workflows/python-app.yml)
 
-_Ниже представлен результат тестирования_
-
-[![Build Staus](https://github.com/VoroninMaxim/Pipline_DVC/workflows/CI%2FCD/badge.svg)
