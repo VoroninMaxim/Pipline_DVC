@@ -1,0 +1,29 @@
+stages:
+  stage_01: #название этапа, которое может быть изменено
+    #Добавление команды - какой файл следует запустить
+    cmd: python stage_01.py
+    #Добавление зависимых файлов
+    deps:
+      - stage_01.py
+    #Добавление выходных файлов
+    outs:
+      - titanic_train.csv
+  
+  stage_02:
+
+    cmd: python stage_02.py
+
+    deps:
+      - titanic_train.csv
+      - stage_02.py
+  
+  stage_03:
+
+    cmd: python stage_03.py
+
+    deps:
+      - titanic_train.csv
+      - stage_03.py
+
+    outs:
+      - titanic_train_one_hot.csv
