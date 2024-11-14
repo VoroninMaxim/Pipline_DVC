@@ -25,12 +25,19 @@ jobs:
           pip install dvc-gdrive
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Set up Google Cloud credentials
+        run: |
+          echo "${{ secrets.SECRETS_GOOGLE }}" > $HOME/.gcloud/service_account.json
+          export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.gcloud/service_account.json"
 
       - name: Configure DVC remote
         run: |
           dvc repro
 
+      - name: Configure DVC push
+        run: |
+          dvc push
+
       - name: Configure DVC pull
         run: |
-#          dvc remote add -d storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
-          dvc pull
+          dvc pull --force          
