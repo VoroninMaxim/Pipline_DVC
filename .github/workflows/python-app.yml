@@ -35,9 +35,9 @@ jobs:
       #   run: |
       #     dvc repro
 
-      # - name: Configure DVC push
-      #   run: |
-      #     dvc push
+      - name: Configure DVC push
+        run: |
+          dvc push
 
       # - name: Configure DVC pull
       #   run: |
