@@ -29,7 +29,7 @@ jobs:
         env:
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}
         run: |
-          dvc pull --force
+          dvc repro
 
       # - name: Configure DVC remote
       #   run: |
