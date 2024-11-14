@@ -32,4 +32,5 @@ jobs:
 
       - name: Configure DVC push
         run: |
+          dvc remote add -d storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
           dvc push
