@@ -27,7 +27,7 @@ jobs:
 
       - name: Commit and push HTML file
         run: |
-          ./decrypt_secret.sh
+          decrypt_secret.sh
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           
