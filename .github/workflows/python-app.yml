@@ -27,11 +27,13 @@ jobs:
 
       - name: Commit and push HTML file
         run: |
-          git config --local user.email "maksimsazonov476@gmail.com"
-          git config --local user.name "VoroninMaxim"
+          ./decrypt_secret.sh
         env:
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}  # Используйте GITHUB_TOKEN для аутентификации
-
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          
+      - name: Test printing your secret (Remove this step in production)
+        run: dvc remote modify storage --local gdrive_service_account_json_file_path $HOME/.dvc/service_account.json
+        
 
 
       # - name: Pull data with DVC
