@@ -7,7 +7,7 @@ on:
 
   schedule:
     - cron: "* 1 * * *"
-
+    
 jobs:
   dvc_operations:
     runs-on: ubuntu-latest
