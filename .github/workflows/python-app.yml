@@ -16,10 +16,11 @@ jobs:
       
       - name: Decrypt large secret
         run: |
-          # chmod +x ./decrypt_secret.sh  # Ensure the script is executable
-          ./decrypt_secret.sh
-        env:
+          chmod +x ./decrypt_secret.sh  # Ensure the script is executable
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          ./decrypt_secret.sh
+        # env:
+        #   LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       - name: Test printing your secret (Remove this step in production)
         run: dvc remote modify storage --local gdrive_service_account_json_file_path ./.dvc/service_account.json
 
