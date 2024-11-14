@@ -28,3 +28,7 @@ jobs:
       - name: Configure DVC remote
         run: |
           dvc repro
+
+      - name: Configure DVC push
+        run: |
+          dvc push
