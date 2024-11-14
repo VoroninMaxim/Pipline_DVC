@@ -25,24 +25,33 @@ jobs:
           pip install dvc-gdrive
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Pull data with DVC
-        env:
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}
+      - name: Commit and push HTML file
         run: |
-          dvc remote add -d -f storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
-          # dvc remote modify storage --local gdrive_use_service_account true
-          dvc remote modify storage --local gdrive_service_account_json_file_path /dev/null
-          dvc repro
-          dvc push
+          git config --local user.email "maksimsazonov476@gmail.com"
+          git config --local user.name "VoroninMaxim"
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}  # Используйте GITHUB_TOKEN для аутентификации
 
-      # - name: Configure DVC remote
+
+
+      # - name: Pull data with DVC
+      #   env:
+      #     GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}
       #   run: |
+      #     dvc remote add -d -f storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
+      #     # dvc remote modify storage --local gdrive_use_service_account true
+      #     dvc remote modify storage --local gdrive_service_account_json_file_path /dev/null
       #     dvc repro
-
-      # - name: Configure DVC push
-      #   run: |
       #     dvc push
 
-      # - name: Configure DVC pull
-      #   run: |
-          # dvc pull --force          
+      - name: Configure DVC remote
+        run: |
+          dvc repro
+
+      - name: Configure DVC push
+        run: |
+          dvc push
+
+      - name: Configure DVC pull
+        run: |
+          dvc pull --force          
