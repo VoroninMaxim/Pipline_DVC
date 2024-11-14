@@ -30,7 +30,7 @@ jobs:
         run: |
           dvc repro
 
-      - name: Configure DVC push
+      - name: Configure DVC pull
         run: |
-          dvc remote add -d storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
-          dvc push
+#          dvc remote add -d storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
+          dvc pull
