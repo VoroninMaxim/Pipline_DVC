@@ -26,7 +26,7 @@ jobs:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
 
       - name: Test printing your secret (Remove this step in production)
-        run: cat ./.dvc/service_account.json
+        run: cat LARGE_SECRET_PASSPHRASE #cat ./.dvc/service_account.json
           
       - name: Test printing your secret (Remove this step in production)
         run: |
