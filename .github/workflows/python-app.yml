@@ -24,8 +24,12 @@ jobs:
           gpg --quiet --batch --yes --decrypt --passphrase="0pen0pen" --output ./.dvc/service_account.json ./.dvc/service_account.json.gpg
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+
       - name: Test printing your secret (Remove this step in production)
-        run: dvc remote modify storage --local gdrive_service_account_json_file_path ./.dvc/service_account.json
+        run: cat .dvc/service_account.json
+          
+      - name: Test printing your secret (Remove this step in production)
+        run: dvc remote modify storage --local gdrive_service_account_json_file_path .dvc/service_account.json
 
 
       - name: Setup Python
