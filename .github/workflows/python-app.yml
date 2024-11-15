@@ -32,8 +32,6 @@ jobs:
       - name: Decrypt large secret
         run: |
           chmod +x ./decrypt_secret.sh  # Ensure the script is executable
-          # gpg --list-secret-keys
-          # gpg --list-keys
           ./decrypt_secret.sh
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
@@ -41,33 +39,19 @@ jobs:
       - name: Test printing your secret (Remove this step in production)
         run: cat ./.dvc/service_account.json
           
-      # - name: Test printing your secret (Remove this step in production)
-      #   run: |
-      #    dvc remote list
-      #    dvc remote modify storage gdrive_use_service_account true
-      #    dvc remote modify storage gdrive_service_account_json_file_path ./.dvc/service_account.json
+      - name: Install DVC
+        run: |
+          pip install dvc
+          pip install dvc-gdrive
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Test printing your secret (Remove this step in production)
+        run: |
+         dvc remote list
+         dvc remote modify storage gdrive_use_service_account true
+         dvc remote modify storage gdrive_service_account_json_file_path ./.dvc/service_account.json
 
 
-      # - name: Setup Python
-      #   uses: actions/setup-python@v3
-      #   with:
-      #     python-version: "3.10.5"
-
-      # - name: Install DVC
-      #   run: |
-      #     pip install dvc
-      #     pip install dvc-gdrive
-      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-
-      # - name: Commit and push HTML file
-      #   run: |
-      #     decrypt_secret.sh
-      #   env:
-      #     LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-      # - name: Test printing your secret (Remove this step in production)
-      #   run: dvc remote modify storage --local gdrive_service_account_json_file_path $HOME/.dvc/service_account.json
-        
 
 
       # - name: Pull data with DVC
