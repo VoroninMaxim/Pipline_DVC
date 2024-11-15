@@ -17,6 +17,8 @@ jobs:
       - name: Decrypt large secret
         run: |
           chmod +x ./decrypt_secret.sh  # Ensure the script is executable
+          gpg --list-secret-keys
+          gpg --list-keys
           # LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           ./decrypt_secret.sh
         env:
