@@ -9,25 +9,6 @@ jobs:
   dvc_operations:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v2
-
-      # - name: Use secret
-      #   run: |
-      #     echo "Using secret for operations"
-      #     # Example command that uses the secret
-      #     # Replace this with your actual command
-      #     echo "Secret value length: ${#LARGE_SECRET_PASSPHRASE}"
-      #     if [ -n "$LARGE_SECRET_PASSPHRASE" ]; then
-      #       echo "Secret is set and not empty"
-      #     else
-      #       echo "Secret is not set or is empty"
-      #     fi
-      #   env:
-      #     LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-      #     ACTIONS_STEP_DEBUG: true
-        
-    
       - uses: actions/checkout@v3
       - name: Decrypt large secret
         run: |
@@ -44,7 +25,8 @@ jobs:
           pip install --upgrade pip
           pip install dvc==3.51.2
           pip install dvc-gdrive==3.0.1 
-          pip install cryptography==41.0.3
+          #pip install cryptography==41.0.3
+          pip install cryptography==3.4.7
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Test printing your secret (Remove this step in production)
