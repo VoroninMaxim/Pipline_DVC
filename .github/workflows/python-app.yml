@@ -18,6 +18,11 @@ jobs:
           # Example command that uses the secret
           # Replace this with your actual command
           echo "Secret value length: ${#LARGE_SECRET_PASSPHRASE}"
+          if [ -n "$LARGE_SECRET_PASSPHRASE" ]; then
+            echo "Secret is set and not empty"
+          else
+            echo "Secret is not set or is empty"
+          fi
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           ACTIONS_STEP_DEBUG: true
