@@ -15,8 +15,9 @@ jobs:
       - name: Use secret
         run: |
           echo "Using secret for operations"
-          # Replace this line with your actual command that uses the secret
-          # For example, if you're using DVC, you might run a DVC command here.
+          # Example command that uses the secret
+          # Replace this with your actual command
+          echo "Secret value length: ${#LARGE_SECRET_PASSPHRASE}"
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           ACTIONS_STEP_DEBUG: true
