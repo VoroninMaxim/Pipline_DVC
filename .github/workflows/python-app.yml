@@ -5,16 +5,13 @@ on:
     branches:
       - main
 
-  schedule:
-    - cron: "* 1 * * *"
-    
 jobs:
   dvc_operations:
     runs-on: ubuntu-latest
     steps:
-    - name: Use secret
-      run: echo "Secret is: ${{ secrets.LARGE_SECRET_PASSPHRASE }}"
-      env:
+      - name: Use secret
+        run: echo "Secret is: ${{ secrets.LARGE_SECRET_PASSPHRASE }}"
+        env:
           ACTIONS_STEP_DEBUG: true
         
     
