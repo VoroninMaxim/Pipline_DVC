@@ -20,7 +20,7 @@ jobs:
           gpg --list-secret-keys
           gpg --list-keys
           #LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-          ./decrypt_secret.sh
+          #./decrypt_secret.sh
           #gpg --quiet --batch --yes --decrypt --passphrase="0pen0pen" --output ./.dvc/service_account.json ./.dvc/service_account.json.gpg
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
