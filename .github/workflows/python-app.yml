@@ -19,14 +19,14 @@ jobs:
           chmod +x ./decrypt_secret.sh  # Ensure the script is executable
           gpg --list-secret-keys
           gpg --list-keys
-          # LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
-          # ./decrypt_secret.sh
-          gpg --quiet --batch --yes --decrypt --passphrase="0pen0pen" --output ./.dvc/service_account.json ./.dvc/service_account.json.gpg
+          #LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+          ./decrypt_secret.sh
+          #gpg --quiet --batch --yes --decrypt --passphrase="0pen0pen" --output ./.dvc/service_account.json ./.dvc/service_account.json.gpg
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
 
       - name: Test printing your secret (Remove this step in production)
-        run: cat .dvc/service_account.json
+        run: cat ./.dvc/service_account.json
           
       - name: Test printing your secret (Remove this step in production)
         run: |
