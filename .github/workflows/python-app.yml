@@ -51,27 +51,14 @@ jobs:
          dvc remote modify storage gdrive_use_service_account true
          dvc remote modify storage gdrive_service_account_json_file_path ./.dvc/service_account.json
 
+      - name: Configure DVC remote
+        run: |
+          dvc repro
 
+      - name: Configure DVC push
+        run: |
+          dvc push
 
-
-      # - name: Pull data with DVC
-      #   env:
-      #     GDRIVE_CREDENTIALS_DATA: ${{ secrets.SECRETS_GOOGL }}
-      #   run: |
-      #     dvc remote add -d -f storage gdrive://1CUWjhnRnxFJQe1eN8FCLoyHXE4Fvd5rD
-      #     # dvc remote modify storage --local gdrive_use_service_account true
-      #     dvc remote modify storage --local gdrive_service_account_json_file_path /dev/null
-      #     dvc repro
-      #     dvc push
-
-      # - name: Configure DVC remote
-      #   run: |
-      #     dvc repro
-
-      # - name: Configure DVC push
-      #   run: |
-      #     dvc push
-
-      # - name: Configure DVC pull
-      #   run: |
-      #     dvc pull --force          
+      - name: Configure DVC pull
+        run: |
+          dvc pull --force          
